@@ -20,7 +20,7 @@ function addBook() {
     if (book.value == '') {
         // alert('Guy, fill in something')
         // errorMsg.style.display = 'block'
-        toast('Kindly fill in the input','red',1000)
+        toast('Kindly fill in the input','red',1500)
     } else {
         // errorMsg.style.display = 'none'
         allBooks.push(book.value)
