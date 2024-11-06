@@ -9,7 +9,6 @@ function toast(message, colour = 'red') {
         position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-
             background: colour
         },
         onClick: function () { } // Callback after click
@@ -23,7 +22,7 @@ function addBook() {
         // errorMsg.style.display = 'block'
         toast('Kindly fill in the input')
     } else {
-        errorMsg.style.display = 'none'
+        // errorMsg.style.display = 'none'
         allBooks.push(book.value)
         toast('Added succesfully', 'green')
         console.log(allBooks);
@@ -44,6 +43,7 @@ function deleteAny() {
             toast('Invalid number entered')
         } else {
             allBooks.splice(indexToDelete - 1, 1)
+            toast('Deleted successfully!', 'blue')
             displayOurBooks()
         }
     }
@@ -52,7 +52,7 @@ function deleteAny() {
 function displayOurBooks() {
     displayBooks.innerHTML = ""
     displayBooks.innerHTML = `
-        <table class="table table-bordered" id="table">
+        <table class="table table-bordered table-striped table-dark" id="table">
             <th>S/N</th>
             <th>Books</th>
         </table>
