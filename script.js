@@ -1,7 +1,7 @@
-function toast(message, colour = 'red') {
+function toast(message, colour = 'red', duration = 3000) {
     Toastify({
         text: message,
-        duration: 3000,
+        duration: duration,
         destination: "https://github.com/apvarun/toastify-js",
         newWindow: true,
         close: true,
@@ -20,7 +20,7 @@ function addBook() {
     if (book.value == '') {
         // alert('Guy, fill in something')
         // errorMsg.style.display = 'block'
-        toast('Kindly fill in the input')
+        toast('Kindly fill in the input','red',1000)
     } else {
         // errorMsg.style.display = 'none'
         allBooks.push(book.value)
