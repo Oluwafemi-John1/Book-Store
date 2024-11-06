@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+
+<body class="bg-light">
+    <div class="col-lg-7 col-10 mx-auto mt-lg-5 mt-3 shadow rounded-3 text-center p-lg-3 p-2">
+        <h3 class="text-center text-success text-decoration-underline">Book Store</h3>
+        <p class="alert alert-danger p-1" style="display: none;" id="errorMsg">Kindly fill in the input</p>
+        <div class="form-group my-lg-4 my-2">
+            <input type="text" id="book" class="form-control form-control-sm shadow-0 shadow-none">
+        </div>
+        <button onclick="addBook()" class="btn btn-primary btn-sm w-100 my-2">Submit</button>
+        <div id="displayBooks" class="my-4">
+            <p class="alert alert-secondary p-2">No Books added yet</p>
+        </div>
+        <button class="btn btn-warning">Edit Any</button>
+        <button onclick="deleteAny()" class="btn btn-danger">Delete Any</button>
+    </div>
+</body>
+
+<script>
+    function toast(message, colour = 'red') {
+        Toastify({
+            text: message,
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+
+                background: colour
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+    }
+
+    var allBooks = []
+    function addBook() {
+        if (book.value == '') {
+            // alert('Guy, fill in something')
+            // errorMsg.style.display = 'block'
+            toast('Kindly fill in the input')
+        } else {
+            errorMsg.style.display = 'none'
+            allBooks.push(book.value)
+            toast('Added succesfully', 'green')
+            console.log(allBooks);
+            // book.value = ''
+            document.getElementById('book').value = ''
+            displayOurBooks()
+        }
+    }
+
+    function deleteAny() {
+        if (allBooks.length < 1) {
+            alert("Nothing to delete, shine your eyes")
+        } else {
+            var indexToDelete = Number(prompt('Enter which number to delete'))
+            console.log(indexToDelete);
+            if (indexToDelete > allBooks.length) {
+                // alert('Invalid number entered')
+                toast('Invalid number entered')
+            } else {
+                allBooks.splice(indexToDelete - 1, 1)
+                displayOurBooks()
+            }
+        }
+    }
+
+    function displayOurBooks() {
+        displayBooks.innerHTML = ""
+        displayBooks.innerHTML = `
+            <table class="table table-bordered" id="table">
+                <th>S/N</th>
+                <th>Books</th>
+            </table>
+            `
+        for (var i = 0; i < allBooks.length; i++) {
+            console.log(allBooks[i])
+            table.innerHTML += `
+                <td>${i + 1}</td>
+                <td>${allBooks[i]}</td>
+                `
+        }
+    }
+</script>
+
+</html>
