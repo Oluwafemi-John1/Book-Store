@@ -64,8 +64,14 @@ function editAny() {
 
 function deleteBook(index) {
     console.log(index);
-    allBooks.splice(index, 1)
-    displayOurBooks()
+    var confirmDelete = confirm('Are you sure you want to delete this book?')
+    console.log(confirmDelete);
+    if(confirmDelete) {
+        allBooks.splice(index, 1)
+        displayOurBooks()
+    } else {
+        displayOurBooks()
+    }
 }
 
 function displayOurBooks() {
