@@ -1,4 +1,4 @@
-function toast(message, colour = 'red', duration = 3000) {
+function toast(message = 'Welcome', colour = 'red', duration = 3000) {
     Toastify({
         text: message,
         duration: duration,
@@ -14,6 +14,7 @@ function toast(message, colour = 'red', duration = 3000) {
         onClick: function () { } // Callback after click
     }).showToast();
 }
+
 
 var allBooks = []
 function addBook() {
@@ -34,7 +35,7 @@ function addBook() {
 
 function deleteAny() {
     if (allBooks.length < 1) {
-        alert("Nothing to delete, shine your eyes")
+        toast("Nothing to delete, shine your eyes", "black")
     } else {
         var indexToDelete = Number(prompt('Enter which number to delete'))
         console.log(indexToDelete);
@@ -44,6 +45,24 @@ function deleteAny() {
         } else {
             allBooks.splice(indexToDelete - 1, 1)
             toast('Deleted successfully!', 'blue')
+            displayOurBooks()
+        }
+    }
+}
+
+function editAny() {
+    if (allBooks.length < 1) {
+        toast("Nothing to edit, shine your eyes", "black")
+    } else {
+        var indexToEdit = Number(prompt('Enter which number to edit'))
+        console.log(indexToEdit);
+        if (indexToEdit > allBooks.length) {
+            // alert('Invalid number entered')
+            toast('Invalid number entered')
+        } else {
+            var newBook = prompt('Enter the new book')
+            allBooks.splice(indexToEdit - 1, 1, newBook)
+            toast('Edited successfully!', 'green')
             displayOurBooks()
         }
     }
