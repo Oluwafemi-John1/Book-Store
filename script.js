@@ -62,19 +62,34 @@ function editAny() {
     }
 }
 
+function deleteBook(index) {
+    console.log(index);
+    allBooks.splice(index, 1)
+    displayOurBooks()
+}
+
 function displayOurBooks() {
     displayBooks.innerHTML = ""
     displayBooks.innerHTML = `
-        <table class="table table-bordered table-striped table-dark" id="table">
-            <th>S/N</th>
-            <th>Books</th>
+        <table class="table table-bordered table-striped table-hover table-dark" id="table">
+            <tr>
+                <th>S/N</th>
+                <th>Books</th>
+                <th>Actions</th>
+            </tr>
         </table>
         `
     for (var i = 0; i < allBooks.length; i++) {
         console.log(allBooks[i])
         table.innerHTML += `
-            <td>${i + 1}</td>
-            <td>${allBooks[i]}</td>
+            <tr>
+                <td>${i + 1}</td>
+                <td>${allBooks[i]}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning">Edit</button>
+                    <button onclick="deleteBook(${i})" class="btn btn-sm btn-danger">Delete</button>
+                </td>
+            </tr>
             `
     }
 }
