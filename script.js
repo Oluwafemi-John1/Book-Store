@@ -82,7 +82,6 @@ function deleteBook(index) {
 }
 
 function editIndex(index) {
-    // console.log(index);
     newIndex = index
 }
 
