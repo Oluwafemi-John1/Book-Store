@@ -13,13 +13,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-light">
     <div class="col-lg-7 col-11 mx-auto mt-5 shadow rounded-3 text-center p-3">
         <h3 class="text-center text-dark text-decoration-underline">Book Store</h3>
         <div class="form-group my-lg-4 my-2">
-            <input type="text" id="book" class="form-control form-control-sm shadow-0 shadow-none">
+            <input type="text" placeholder="Enter your desired book" id="book" class="form-control form-control-sm shadow-0 shadow-none">
         </div>
         <button onclick="addBook()" class="btn btn-dark btn-sm w-100 my-2">Submit</button>
         <div id="displayBooks" class="my-4">
@@ -28,6 +29,29 @@
         <p class="alert alert-danger py-1" id="noBooks" style="display: none;">Books added have been removed</p>
         <button disabled onclick="editAny()" class="btn btn-warning">Edit Any</button>
         <button disabled onclick="deleteAny()" class="btn btn-danger">Delete Any</button>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Book</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group my-2">
+                        <input type="text" placeholder="Enter updated book" id="updatedBook" class="form-control form-control-sm shadow-0 shadow-none">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button onclick="editBook()" type="button" data-bs-dismiss="modal" class="btn btn-success">Confirm Edit</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

@@ -1,3 +1,6 @@
+var allBooks = []
+var newIndex  = 0
+
 function toast(message = 'Welcome', colour = 'red', duration = 3000) {
     Toastify({
         text: message,
@@ -15,8 +18,6 @@ function toast(message = 'Welcome', colour = 'red', duration = 3000) {
     }).showToast();
 }
 
-
-var allBooks = []
 function addBook() {
     if (book.value == '') {
         toast('Kindly fill in the input','red',1500)
@@ -80,6 +81,24 @@ function deleteBook(index) {
     }
 }
 
+function editIndex(index) {
+    // console.log(index);
+    newIndex = index
+}
+
+function editBook() {
+    if (updatedBook.value == '') {
+        toast('Kindly fill in the input','red',1500)
+    } else {
+        allBooks.splice(newIndex, 1, updatedBook.value)
+        toast('Updated succesfully', 'green')
+        console.log(allBooks);
+        document.getElementById('updatedBook').value = ''
+        displayOurBooks()
+    }
+}
+
+
 function displayOurBooks() {
     displayBooks.innerHTML = ""
     displayBooks.innerHTML = `
@@ -98,7 +117,7 @@ function displayOurBooks() {
                 <td>${i + 1}</td>
                 <td>${allBooks[i]}</td>
                 <td>
-                    <button class="btn btn-sm btn-warning">Edit</button>
+                    <button onclick="editIndex(${i})" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
                     <button onclick="deleteBook(${i})" class="btn btn-sm btn-danger">Delete</button>
                 </td>
             </tr>
