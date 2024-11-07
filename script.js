@@ -68,7 +68,13 @@ function deleteBook(index) {
     console.log(confirmDelete);
     if(confirmDelete) {
         allBooks.splice(index, 1)
-        displayOurBooks()
+        toast('Deleted successfully')
+        if(allBooks.length < 1) {
+            table.innerHTML = ''
+            noBooks.style.display = 'block'
+        } else {
+            displayOurBooks()
+        }
     } else {
         displayOurBooks()
     }
