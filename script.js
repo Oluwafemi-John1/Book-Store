@@ -5,13 +5,13 @@ function toast(message = 'Welcome', colour = 'red', duration = 3000) {
         destination: "https://github.com/apvarun/toastify-js",
         newWindow: true,
         close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
         style: {
             background: colour
         },
-        onClick: function () { } // Callback after click
+        onClick: function () { }
     }).showToast();
 }
 
@@ -19,15 +19,11 @@ function toast(message = 'Welcome', colour = 'red', duration = 3000) {
 var allBooks = []
 function addBook() {
     if (book.value == '') {
-        // alert('Guy, fill in something')
-        // errorMsg.style.display = 'block'
         toast('Kindly fill in the input','red',1500)
     } else {
-        // errorMsg.style.display = 'none'
         allBooks.push(book.value)
         toast('Added succesfully', 'green')
         console.log(allBooks);
-        // book.value = ''
         document.getElementById('book').value = ''
         displayOurBooks()
     }
@@ -40,7 +36,6 @@ function deleteAny() {
         var indexToDelete = Number(prompt('Enter which number to delete'))
         console.log(indexToDelete);
         if (indexToDelete > allBooks.length) {
-            // alert('Invalid number entered')
             toast('Invalid number entered')
         } else {
             allBooks.splice(indexToDelete - 1, 1)
@@ -57,7 +52,6 @@ function editAny() {
         var indexToEdit = Number(prompt('Enter which number to edit'))
         console.log(indexToEdit);
         if (indexToEdit > allBooks.length) {
-            // alert('Invalid number entered')
             toast('Invalid number entered')
         } else {
             var newBook = prompt('Enter the new book')
