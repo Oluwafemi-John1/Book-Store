@@ -23,6 +23,7 @@ function addBook() {
         toast('Kindly fill in the input','red',1500)
     } else {
         allBooks.push(book.value)
+        // localStorage.setItem('books', JSON.stringify(allBooks))
         toast('Added succesfully', 'green')
         console.log(allBooks);
         document.getElementById('book').value = ''
@@ -97,7 +98,8 @@ function editBook() {
     }
 }
 
-
+var gottenBooks = localStorage.getItem('books')
+var parsedBooks = JSON.parse(gottenBooks)
 function displayOurBooks() {
     displayBooks.innerHTML = ""
     displayBooks.innerHTML = `
